@@ -1,40 +1,38 @@
-### Pasos para crear los Git Submodules
 
 
-1. Crear un nuevo repositorio en GitHub
-2. Clonar el repositorio en la máquina local
-3. Añadir el submodule, donde `repository_url` es la url del repositorio y `directory_name` es el nombre de la carpeta donde quieres que se guarde el sub-módulo (no debe de existir en el proyecto)
+
+
+## Dev
+1. Clone the repository
+2. Create a .env file based on the .env.template
+3. Run the command `git submodule update --init --recursive` to rebuild the submodules
+4. Run the command `docker compose up --build`
+
+### Steps to create Git Submodules
+1. Create a new repository on GitHub
+2. Clone the repository to the local machine
+3. Add the submodule, where `repository_url` is the URL of the repository and `directory_name` is the name of the folder where you want to store the submodule (it should not exist in the project)
 ```
 git submodule add <repository_url> <directory_name>
 ```
-4. Añadir los cambios al repositorio (git add, git commit, git push)
-Ej:
+4. Add the changes to the repository (git add, git commit, git push)
+Example:
 ```
 git add .
 git commit -m "Add submodule"
 git push
 ```
-5. Inicializar y actualizar Sub-módulos, cuando alguien clona el repositorio por primera vez, debe de ejecutar el siguiente comando para inicializar y actualizar los sub-módulos
+5. Initialize and update submodules. When someone clones the repository for the first time, they should run the following command to initialize and update the submodules:
 ```
 git submodule update --init --recursive
 ```
-6. Para actualizar las referencias de los sub-módulos
+6. To update the submodule references:
 ```
 git submodule update --remote
 ```
 
 
-## Importante
-Si se trabaja en el repositorio que tiene los sub-módulos, **primero actualizar y hacer push** en el sub-módulo y **después** en el repositorio principal. 
+## Important
+When working in the repository that has submodules, **first update and push** in the submodule and **then** in the main repository.
 
-Si se hace al revés, se perderán las referencias de los sub-módulos en el repositorio principal y tendremos que resolver conflictos.
-
-
-
-
-
-## DEV
-
-1. Clone the repo
-2. Create a .env based on the .env.template
-3. Run `docker-compose up --build`
+If done in reverse order, the submodule references in the main repository will be lost, and we'll have to resolve conflicts.
